@@ -16,6 +16,8 @@ const Main = () => {
 <div
   style={{ width: "100%", height: 720, position: "relative", overflow: "hidden", background: "#fff" }}
 >
+  <button>임시 공지사항 버튼</button>
+  <button>임시 관리자페이지 버튼</button>
   <div style={{ width: 1280, height: "135.9px" }}>
     <img
       src={SoftwareIcon} alt="Software Icon"
@@ -134,7 +136,7 @@ const Main = () => {
           <ellipse cx={40} cy="37.7036" rx={40} ry="37.7036" fill="#BA76FF" fill-opacity="0.2" />
         </svg>
         <img
-          onClick={()=> navigate('/Company')}
+          onClick={()=> navigate('/problem/company')}
           src={PastIcon} alt="Past Icon"
           style={{
             width: "67.69px",
@@ -345,7 +347,7 @@ const Main = () => {
           <ellipse cx={40} cy="37.5" rx={40} ry="37.5" fill="#BA76FF" fill-opacity="0.2" />
         </svg>
         <img
-          onClick={()=> navigate('/Type')}
+          onClick={()=> navigate('/problem/type')}
           src={TypeIcon} alt="Type Icon"
           style={{
             width: "47.69px",
