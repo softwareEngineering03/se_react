@@ -1,26 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
 import { useNavigate, useLocation, Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Notice = () => {
 
-  const title = "title";
-  const dateElement = new Date;
-  const date = dateElement.toLocaleDateString()
-  const notices = [ //dummydata
-    {
-      "title": title,
-      "date": date
-    },
-    {
-      "title": title,
-      "date": date
-    },
-    {
-      "title": title,
-      "date": date
-    },
-  ]
+  const [notices, setNotices] = useState([])
+
+  // const dateElement = new Date;
+  // const date = dateElement.toLocaleDateString()
+
+  const sampleNotice = [ //dummydata
+  {NoticeID: 3, Title: 'title', Date: '2023-11-28T17:39:34.000Z', Status: 'N'},
+  {NoticeID: 4, Title: 'title', Date: '2023-11-28T17:41:26.000Z', Status: 'N'},
+  {NoticeID: 5, Title: 'title', Date: '2023-11-28T17:41:40.000Z', Status: 'N'},
+  {NoticeID: 6, Title: 'title', Date: '2023-11-28T17:42:04.000Z', Status: 'N'},
+  {NoticeID: 7, Title: '서비스 점검 시간 관련 재공지', Date: '2023-12-03T17:13:25.000Z', Status: 'U'},
+  {NoticeID: 8, Title: 'title', Date: '2023-11-28T17:42:29.000Z', Status: 'N'}  ]
+
+
+
+  useEffect(async ()=>{
+    await axios.get("http://localhost:5000" + "/notice/list")
+    .then(result=>{
+      console.log(result.data.result)
+      setNotices(result.data.result)
+    })
+  },[])
 
 
   return (
@@ -46,10 +52,10 @@ const Notice = () => {
                     <th>제목</th>
                   </tr>
                 </thead>
-                <tbody>{
+                <tbody >{
                   notices.map((notice) => <tr>
-                    <td>{notice.date}</td>
-                    <td>{notice.title}</td>
+                    <td>{notice.Date}</td>
+                    <td onClick={()=> console.log(notice.NoticeID)}>{notice.Title}</td>
                   </tr>
                   )
                 }</tbody>
