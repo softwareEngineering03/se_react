@@ -20,13 +20,16 @@ const Notice = () => {
 
 
 
-  useEffect(async ()=>{
-    await axios.get("http://localhost:5000" + "/notice/list")
+  useEffect(()=>{
+    getNotice();
+  },[])
+  async function getNotice () {
+    return await axios.get("http://localhost:5000" + "/notice/list")
     .then(result=>{
       console.log(result.data.result)
       setNotices(result.data.result)
     })
-  },[])
+  }
 
 
   return (

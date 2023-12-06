@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
 
-const Problem = () => {
+const ProblemByType = () => {
     const navigate = useNavigate();
 
     const [problems, setProblems] = useState([]);
@@ -20,7 +20,7 @@ const Problem = () => {
     },[])
 
     async function getProblems() {
-      return await axios.get("http://localhost:5000" + "/problem/company/S")
+      return await axios.get("http://localhost:5000" + "/problem/type/bfs/3")
       .then(result=>{
         setProblems(result.data.result);
         console.log(result.data.result)
@@ -34,7 +34,7 @@ const Problem = () => {
         >
           </div>
           <div className="container" style={{ fontFamily: 'Noto Sans Korean,Malgun Gothic,sans-serif' }}>
-            <div className="lf-menu-nav"><span>추천받은 문제보기</span></div>
+            <div className="lf-menu-nav"><span>추천받은 유형별 문제보기</span></div>
             <div className="lf-contents pd12">
               <div style={{ padding: "0 12px" }}>
                 <Table className="board_list text-center">
@@ -68,4 +68,4 @@ const Problem = () => {
          width: 100%;
          text-align: center;
   `
-export default Problem;
+export default ProblemByType;
