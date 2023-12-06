@@ -10,7 +10,7 @@ function Header(isLogin) {
     const [cookies, setCookie, removeCookie] = useCookies(['userInfo']);
 
 
-    return (<div style={{ width: "100%", height: 120 }}>
+    return (<div style={{ width: "100%", height: 80 }}>
         <div
             style={{
                 width: "100%",

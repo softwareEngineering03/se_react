@@ -16,7 +16,7 @@ const Main = () => {
 <div
   style={{ width: "100%", height: 720, position: "relative", overflow: "hidden", background: "#fff" }}
 >
-  <button>임시 공지사항 버튼</button>
+  <button onClick={() =>{navigate('/notice')}}>임시 공지사항 버튼</button>
   <button>임시 관리자페이지 버튼</button>
   <div style={{ width: 1280, height: "135.9px" }}>
     <img
@@ -510,13 +510,12 @@ const Main = () => {
 }
 
 
-const BODY = styled.div`
-        display: flex;
-        flex-direction: row;
-        flex: 1;
-        width: 100%;
-        height: 100%;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+const Container = styled.div`
+margin: 25px;
+width: 100%;
+height: 200px;
+display: flex;
+justify-content: center;
+align-items: center;
 `
 export default Main;

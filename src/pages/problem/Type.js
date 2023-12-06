@@ -12,7 +12,7 @@ const Type = () => {
    
     return (
       < >
-        <h1 style={{ textAlign: "center" }}>문제 추천을 위해 난이도를 선택해주세요</h1>
+        <h1 style={{ textAlign: "center" }}>문제 추천을 위해 유형을 선택해주세요</h1>
         <Container>
           <Button onClick={() => {setType('DP'); navigate('/problem/level')}}>DP</Button>
           <Button onClick={() => {setType('bfs dfs'); navigate('/problem/level')}}>dfs/bfs</Button>

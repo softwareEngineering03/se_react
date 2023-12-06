@@ -34,7 +34,7 @@ const Problem = () => {
         >
           </div>
           <div className="container" style={{ fontFamily: 'Noto Sans Korean,Malgun Gothic,sans-serif' }}>
-            <div className="lf-menu-nav"><span>추천받은 문제보기</span></div>
+            <div className="lf-menu-nav"><span>추천받은 기업별 문제보기</span></div>
             <div className="lf-contents pd12">
               <div style={{ padding: "0 12px" }}>
                 <Table className="board_list text-center">

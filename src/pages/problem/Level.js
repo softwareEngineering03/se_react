@@ -15,10 +15,10 @@ const Level = () => {
     < >
       <h1 style={{ textAlign: "center" }}>문제 추천을 위해 난이도를 선택해주세요</h1>
       <Container>
-        <Button onClick={() => {setLevel('1'); navigate('/problem')}}>1</Button>
-        <Button onClick={() => {setLevel('2'); navigate('/problem')}}>2</Button>
-        <Button onClick={() => {setLevel('3'); navigate('/problem')}}>3</Button>
-        <Button onClick={() => {setLevel('4'); navigate('/problem')}}>4</Button>
+        <Button onClick={() => {setLevel('1'); navigate('/problemByType')}}>1</Button>
+        <Button onClick={() => {setLevel('2'); navigate('/problemByType')}}>2</Button>
+        <Button onClick={() => {setLevel('3'); navigate('/problemByType')}}>3</Button>
+        <Button onClick={() => {setLevel('4'); navigate('/problemByType')}}>4</Button>
       </Container>
     </>
   );
