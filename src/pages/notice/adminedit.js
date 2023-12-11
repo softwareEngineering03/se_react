@@ -1,16 +1,14 @@
 import SoftwareIcon from './assets/软件图标.png';
-import table from './assets/notice.png';
+import adminedit from './assets/edit.png';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
 
 export default function Pastpage() {
     return (
-       
 <div
   style={{ width: 1280, height: 720, position: "relative", overflow: "hidden", background: "#fff" }}
 >
-<button>완료</button>
   <div style={{ width: 1280, height: 80 }}>
     <p
       style={{
@@ -26,13 +24,13 @@ export default function Pastpage() {
     >
 
     <img
-      src={table} alt="table Icon"
+      src={adminedit} alt="adminedit Icon"
       style={{
-        width: 800,
-        height: 600,
+        width: 1000,
+        height: 400,
         position: "absolute",
-        left: "280px",
-        top: "-140px",
+        left: "200px",
+        top: "-100px",
         objectFit: "cover",
       }}
     />    

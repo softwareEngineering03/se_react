@@ -5,7 +5,10 @@ import axios from 'axios';
 
 const Notice = () => {
 
+  const navigate = useNavigate();
+
   const [notices, setNotices] = useState([])
+
 
   // const dateElement = new Date;
   // const date = dateElement.toLocaleDateString()
@@ -21,6 +24,10 @@ const Notice = () => {
   useEffect(() => {
     setNotices(sampleNotice);
   }, []); 
+
+  const goToNoticeDetail = (noticeID) => {
+    navigate(`/notice/${noticeID}`);
+  };
 
 
   // useEffect(()=>{
@@ -58,13 +65,16 @@ const Notice = () => {
                     <th>제목</th>
                   </tr>
                 </thead>
-                <tbody >{
-                  notices.map((notice) => <tr>
+                <tbody>
+                {notices.map((notice) => (
+                  <tr key={notice.NoticeID}> {/* 使用tr而不是div */}
                     <td>{notice.Date}</td>
-                    <td onClick={()=> console.log(notice.NoticeID)}>{notice.Title}</td>
+                    <td onClick={() => goToNoticeDetail(notice.NoticeID)} style={{ cursor: 'pointer' }}>
+                      {notice.Title}
+                    </td>
                   </tr>
-                  )
-                }</tbody>
+                ))}
+              </tbody>
               </Table>
             </div>
           </div>

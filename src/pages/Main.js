@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from "styled-components";
 import SoftwareIcon from '../assets/서비스로고.png';
 import PastIcon from '../assets/기출아이콘.png';
 import TypeIcon from '../assets/모의고사아이콘.png';
 import Header from '../components/Header';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const Main = () => {
 
+  useEffect(() => {
+    if (!Cookies.get('user')) {
+      Cookies.set('user', 'true', { expires: 3 });
+    }
+  }, []);
+
     const navigate = useNavigate();
+
+    const isAdmin = Cookies.get('admin') == true;
 
     return (
         <>
@@ -17,7 +26,9 @@ const Main = () => {
   style={{ width: "100%", height: 720, position: "relative", overflow: "hidden", background: "#fff" }}
 >
   <button onClick={() =>{navigate('/notice')}}>임시 공지사항 버튼</button>
-  <button onClick={() =>{navigate('/noticeadmin')}}>임시 관리자페이지 버튼</button>
+  {isAdmin && (
+          <button onClick={() => { navigate('/noticeadmin') }}>임시 관리자페이지 버튼</button>
+        )}
   <div style={{ width: 1280, height: "135.9px" }}>
     <img
       src={SoftwareIcon} alt="Software Icon"
