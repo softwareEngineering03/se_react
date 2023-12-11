@@ -17,7 +17,7 @@ const Main = () => {
   style={{ width: "100%", height: 720, position: "relative", overflow: "hidden", background: "#fff" }}
 >
   <button onClick={() =>{navigate('/notice')}}>임시 공지사항 버튼</button>
-  <button>임시 관리자페이지 버튼</button>
+  <button onClick={() =>{navigate('/noticeadmin')}}>임시 관리자페이지 버튼</button>
   <div style={{ width: 1280, height: "135.9px" }}>
     <img
       src={SoftwareIcon} alt="Software Icon"

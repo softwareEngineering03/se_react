@@ -15,6 +15,12 @@ const Problem = () => {
     {ProblemID: '19238', ProblemTitle: '스타트 택시', ProblemLink: 'https://www.acmicpc.net/problem/19238'}, 
     {ProblemID: '23288', ProblemTitle: '주사위 굴리기 2', ProblemLink: 'https://www.acmicpc.net/problem/23288'}]
     
+
+    useEffect(() => {
+      // 直接使用sampleProblems来设置状态
+      setProblems(sampleProblems);
+    }, []); 
+    
     useEffect( ()=>{
       getProblems();
     },[])

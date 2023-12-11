@@ -18,18 +18,21 @@ const Notice = () => {
   {NoticeID: 7, Title: '서비스 점검 시간 관련 재공지', Date: '2023-12-03T17:13:25.000Z', Status: 'U'},
   {NoticeID: 8, Title: 'title', Date: '2023-11-28T17:42:29.000Z', Status: 'N'}  ]
 
+  useEffect(() => {
+    setNotices(sampleNotice);
+  }, []); 
 
 
-  useEffect(()=>{
-    getNotice();
-  },[])
-  async function getNotice () {
-    return await axios.get("http://localhost:5000" + "/notice/list")
-    .then(result=>{
-      console.log(result.data.result)
-      setNotices(result.data.result)
-    })
-  }
+  // useEffect(()=>{
+  //  getNotice();
+  // },[])
+  // async function getNotice () {
+  //   return await axios.get("http://localhost:5000" + "/notice/list")
+  //   .then(result=>{
+  //     console.log(result.data.result)
+  //     setNotices(result.data.result)
+  //   })
+  // }
 
 
   return (
@@ -42,7 +45,7 @@ const Notice = () => {
           <div className="lf-menu-nav"><span>공지사항</span></div>
           <div className="lf-contents pd12">
             <div className="top-controls">
-              <a href="/noticewrite"><button className="lf-button primary float-right">글쓰기</button></a>
+              <a href="/noticeadmin"><button className="lf-button primary float-right">글쓰기</button></a>
             </div>
             <div style={{ padding: "0 12px" }}>
               <Table className="board_list text-center">
