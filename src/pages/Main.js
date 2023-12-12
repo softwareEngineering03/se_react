@@ -3,6 +3,9 @@ import styled from "styled-components";
 import SoftwareIcon from '../assets/서비스로고.png';
 import PastIcon from '../assets/기출아이콘.png';
 import TypeIcon from '../assets/모의고사아이콘.png';
+import settingIcon from '../assets/설정.png';
+import adminIcon from '../assets/관리자.png';
+import noticeIcon from '../assets/공지.png';
 import Header from '../components/Header';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
@@ -15,29 +18,39 @@ const Main = () => {
     }
   }, []);
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const isAdmin = Cookies.get('admin') == true;
+  const isAdmin = Cookies.get('admin') === 'true';
+  const handleNoticeIconClick = () => {
+    navigate('/notice'); 
+  };
 
-    return (
-        <>
-        <Header/>
-<div
-  style={{ width: "100%", height: 720, position: "relative", overflow: "hidden", background: "#fff" }}
->
-  <button onClick={() =>{navigate('/notice')}}>임시 공지사항 버튼</button>
-  {isAdmin && (
-          <button onClick={() => { navigate('/noticeadmin') }}>임시 관리자페이지 버튼</button>
+  const handleadmineditIconClick = () => {
+    navigate('/adminedit'); 
+  };
+
+  const handleloginIconClick = () => {
+    navigate('/login'); 
+  };
+  return (
+    <>
+      <Header />
+      <div
+        style={{ width: "100%", height: 300, overflow: "hidden", background: "#fff", top: -200 }}
+      >
+        {/* <button onClick={() => { navigate('/notice') }}>임시 공지사항 버튼</button> */}
+        {/* {isAdmin && (
+          <button onClick={() => { navigate('/adminedit') }}>임시 관리자페이지 버튼</button>
         )}
-  <div style={{ width: 1280, height: "135.9px" }}>
+        <div style={{ width: 1280, height: "135.9px" }}> */}
     <img
       src={SoftwareIcon} alt="Software Icon"
       style={{
         width: 82,
         height: "76.85px",
         position: "absolute",
-        left: "319.5px",
-        top: "162.5px",
+        left: "315.5px",
+        top: "155.5px",
         objectFit: "cover",
       }}
     />
@@ -91,6 +104,7 @@ const Main = () => {
         이용안내
       </span>
     </p>
+ 
     <svg
       width={682}
       height={4}
@@ -361,8 +375,8 @@ const Main = () => {
           onClick={()=> navigate('/problem/type')}
           src={TypeIcon} alt="Type Icon"
           style={{
-            width: "47.69px",
-            height: "40.84px",
+            width: "67.19px",
+            height: "61.84px",
             position: "absolute",
             left: "843.88px",
             top: "327.58px",
@@ -514,8 +528,120 @@ const Main = () => {
         발휘할 수 있는 환경을 조성합니다​
       </span>
     </p>
+    <div style={{ width: "78.18px", height: 400 }}>
+  <svg
+    width={1}
+    height={600}
+    viewBox="0 0 1 600"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    style={{ position: "absolute", left: 77, top: "85.5px" }}
+    preserveAspectRatio="none"
+  >
+    <path d="M0.5 0V600" stroke="black" stroke-opacity="0.21" />
+  </svg>
+  <div style={{ width: "78.18px", height: "357.23px" }}>
+    <div style={{ width: "77.18px", height: "63.23px" }}>
+      <img
+        src={settingIcon} alt="setting Icon"
+        onClick={handleadmineditIconClick}
+        style={{
+          width: 50,
+          height: "48.08px",
+          position: "absolute",
+          left: "14.5px",
+          top: "493.5px",
+          objectFit: "cover",
+          opacity: 0.3,
+          cursor: "pointer"
+        }}
+      />
+      <p
+        style={{
+          width: "77.18px",
+          height: "22.23px",
+          position: "absolute",
+          left: 1,
+          top: 535,
+          opacity: "0.5",
+          fontSize: 16,
+          textAlign: "center",
+          color: "rgba(0,0,0,0.6)",
+        }}
+      >
+        Set
+      </p>
+    </div>
+    <div style={{ width: "77.18px", height: "65.23px" }}>
+      <p
+        style={{
+          width: "77.18px",
+          height: "22.23px",
+          position: "absolute",
+          left: 0,
+          top: 243,
+          opacity: "0.5",
+          fontSize: 16,
+          textAlign: "center",
+          color: "rgba(0,0,0,0.6)",
+        }}
+      >
+        Log
+      </p>
+      <img
+        src={adminIcon} alt="admin Icon"
+        onClick={handleloginIconClick} // 点击图片时导航
+        style={{
+          width: 50,
+          height: "47.37px",
+          position: "absolute",
+          left: "13.5px",
+          top: "199.5px",
+          objectFit: "cover",
+          opacity: 0.3,
+          cursor: "pointer"
+        }}
+      />
+    </div>
+    <div style={{ width: "77.18px", height: "22.23px" }}>
+      <p
+        style={{
+          width: "77.18px",
+          height: "22.23px",
+          position: "absolute",
+          left: 0,
+          top: 389,
+          opacity: "0.5",
+          fontSize: 16,
+          textAlign: "center",
+          color: "rgba(0,0,0,0.6)",
+        }}
+      >
+        Not
+      </p>
+    </div>
+    
+    <div style={{ width: 45, height: "44.55px" }}>
+      <img
+        src={noticeIcon} alt="notice Icon"
+        onClick={handleNoticeIconClick} // 点击图片时导航
+        style={{
+          width: 45,
+          height: "44.55px",
+          position: "absolute",
+          left: "15.5px",
+          top: "347.5px",
+          borderRadius: 15,
+          objectFit: "cover",
+          opacity: 0.3,
+          cursor: "pointer"
+        }}
+      />
+    </div>
   </div>
 </div>
+  </div>
+
         </>
     );
 }

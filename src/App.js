@@ -6,6 +6,7 @@ import Noticeid from './pages/notice/Noticeid';
 import Adminedit from './pages/notice/adminedit';
 import Noticeadmin from './pages/notice/Noticeadmin';
 import NoticeDetail from './pages/notice/NoticeDetail';
+import Login from './pages/notice/login';
 import Problem from './pages/problem/Problem';
 import ProblemByType from './pages/problem/ProblemByType';
 import Company from './pages/problem/Company';
@@ -25,6 +26,7 @@ function App() {
                     <Route path="/noticeadmin" element={<Noticeadmin />}></Route>
                     <Route path="/noticeid" element={<Noticeid />}></Route>
                     <Route path="/adminedit" element={<Adminedit />}></Route>
+                    <Route path="/login" element={<Login />}></Route>
                     <Route path="/notice/detail/:id" element={<NoticeDetail />}></Route>
                     <Route path="/problem" element={<Problem />}></Route>
                     <Route path="/problemByType" element={<ProblemByType />}></Route>
