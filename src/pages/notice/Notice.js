@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
+import tableBackground from './assets/table.png'; 
+import adminedit from './assets/adminedit.png'; 
 
 const Notice = () => {
 
@@ -14,12 +16,12 @@ const Notice = () => {
   // const date = dateElement.toLocaleDateString()
 
   const sampleNotice = [ //dummydata
-  {NoticeID: 3, Title: 'title', Date: '2023-11-28T17:39:34.000Z', Status: 'N'},
-  {NoticeID: 4, Title: 'title', Date: '2023-11-28T17:41:26.000Z', Status: 'N'},
-  {NoticeID: 5, Title: 'title', Date: '2023-11-28T17:41:40.000Z', Status: 'N'},
-  {NoticeID: 6, Title: 'title', Date: '2023-11-28T17:42:04.000Z', Status: 'N'},
-  {NoticeID: 7, Title: '서비스 점검 시간 관련 재공지', Date: '2023-12-03T17:13:25.000Z', Status: 'U'},
-  {NoticeID: 8, Title: 'title', Date: '2023-11-28T17:42:29.000Z', Status: 'N'}  ]
+  {NoticeID: 3, Title: 'title', Date: '2023-11-28', Status: 'N'},
+  {NoticeID: 4, Title: 'title', Date: '2023-11-28', Status: 'N'},
+  {NoticeID: 5, Title: 'title', Date: '2023-11-28', Status: 'N'},
+  {NoticeID: 6, Title: 'title', Date: '2023-11-28', Status: 'N'},
+  {NoticeID: 7, Title: '서비스 점검 시간 관련 재공지', Date: '2023-12-03', Status: 'U'},
+  {NoticeID: 8, Title: 'title', Date: '2023-11-28', Status: 'N'}  ]
 
   useEffect(() => {
     setNotices(sampleNotice);
@@ -40,52 +42,84 @@ const Notice = () => {
   //     setNotices(result.data.result)
   //   })
   // }
-
-
+ 
   return (
-    <notice>
-      <div
-        style={{ width: 1280, height: 100, position: "relative", overflow: "hidden", background: "#fff" }}
-      >
-        </div>
-        <div className="container" style={{ fontFamily: 'Noto Sans Korean,Malgun Gothic,sans-serif' }}>
-          <div className="lf-menu-nav"><span>공지사항</span></div>
-          <div className="lf-contents pd12">
-            <div className="top-controls">
-              <a href="/noticeadmin"><button className="lf-button primary float-right">글쓰기</button></a>
-            </div>
-            <div style={{ padding: "0 12px" }}>
-              <Table className="board_list text-center">
-                <colgroup>
-                  <col width="500px" />
-                </colgroup>
-                <thead>
-                  <tr>
-                    <th>작성일시</th>
-                    <th>제목</th>
-                  </tr>
-                </thead>
-                <tbody>
-                {notices.map((notice) => (
-                  <tr key={notice.NoticeID}> {/* 使用tr而不是div */}
-                    <td>{notice.Date}</td>
-                    <td onClick={() => goToNoticeDetail(notice.NoticeID)} style={{ cursor: 'pointer' }}>
-                      {notice.Title}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-              </Table>
-            </div>
-          </div>
-        </div>
-    </notice>
+    
+    <StyledTableBackground>
+      <Link to="/notice/Noticeadmin">
+    <img
+      src={adminedit}
+      alt="adminedit Icon"
+      style={{
+        width: "67.69px",
+        height: "61.17px",
+        position: "absolute",
+        left: "1400px",
+        top: "100px",
+        objectFit: "cover",
+        cursor: "pointer"
+      }}
+    />
+  </Link>
+      <StyledTable>
+        <thead>
+          <tr>
+           
+          </tr>
+        </thead>
+        <tbody>
+  {notices.map((notice) => (
+    <tr key={notice.NoticeID}>
+      <td className="date-cell">{notice.Date}</td>
+      <td className="title-cell" onClick={() => navigate(`/notice/${notice.NoticeID}`)} style={{ cursor: 'pointer' }}>
+        {notice.Title}
+      </td>
+    </tr>
+  ))}
+</tbody>
+      </StyledTable>
+    </StyledTableBackground>
   );
-}
+      
+};
 
-const Table = styled.table`
-table-layout:fixed;
-       width: 100%;
-       text-align: center;
-`
+const StyledTableBackground = styled.div`
+  background-image: url(${tableBackground});
+  background-size: cover;
+  padding: 6%;
+`;
+
+const StyledTable = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  background: transparent;
+  background-position: left center;
+
+  th, td {
+    text-align: left;
+    font-size: 24px;
+    padding: 2% 0; // 根据背景图片的单元格大小调整这个值
+    border: none;
+    padding-left: 0px; // 增加左边距来对齐日期
+    line-height: 1.5
+  }
+
+  .date-cell {
+    padding-left: 0%; // 或者根据需要调整的更少，以将日期移动到左边
+  }
+
+  // 特别为标题设置样式
+  .title-cell {
+    padding-right: 0%; // 调整以将标题移动到右边线
+  }
+
+  th {
+    position: sticky;
+    top: 0;
+    background-color: rgba(255,255,255,0.9);
+  }
+
+  
+`;
+
 export default Notice;
