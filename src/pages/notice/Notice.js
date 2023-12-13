@@ -15,33 +15,42 @@ const Notice = () => {
   // const dateElement = new Date;
   // const date = dateElement.toLocaleDateString()
 
-  const sampleNotice = [ //dummydata
-  {NoticeID: 3, Title: 'title', Date: '2023-11-28', Status: 'N'},
-  {NoticeID: 4, Title: 'title', Date: '2023-11-28', Status: 'N'},
-  {NoticeID: 5, Title: 'title', Date: '2023-11-28', Status: 'N'},
-  {NoticeID: 6, Title: 'title', Date: '2023-11-28', Status: 'N'},
-  {NoticeID: 7, Title: '서비스 점검 시간 관련 재공지', Date: '2023-12-03', Status: 'U'},
-  {NoticeID: 8, Title: 'title', Date: '2023-11-28', Status: 'N'}  ]
+  // const sampleNotice = [ //dummydata
+  // {NoticeID: 3, Title: 'title', Date: '2023-11-28', Status: 'N'},
+  // {NoticeID: 4, Title: 'title', Date: '2023-11-28', Status: 'N'},
+  // {NoticeID: 5, Title: 'title', Date: '2023-11-28', Status: 'N'},
+  // {NoticeID: 6, Title: 'title', Date: '2023-11-28', Status: 'N'},
+  // {NoticeID: 7, Title: '서비스 점검 시간 관련 재공지', Date: '2023-12-03', Status: 'U'},
+  // {NoticeID: 8, Title: 'title', Date: '2023-11-28', Status: 'N'}  ]
 
-  useEffect(() => {
-    setNotices(sampleNotice);
-  }, []); 
+  // useEffect(() => {
+  //   setNotices(sampleNotice);
+  // }, []); 
 
   const goToNoticeDetail = (noticeID) => {
     navigate(`/notice/${noticeID}`);
   };
 
+  async function deleteNotice (noticeid) {
+    return await axios.put("http://localhost:5000" + "/notice/delete" + "/" + noticeid, {
+      email : "admin@gmail.com"
+    })
+    .then(result => {
+      console.log(result.data.message)
+      alert("해당 공지사항을 삭제하였습니다.")
+    })
+  }
 
-  // useEffect(()=>{
-  //  getNotice();
-  // },[])
-  // async function getNotice () {
-  //   return await axios.get("http://localhost:5000" + "/notice/list")
-  //   .then(result=>{
-  //     console.log(result.data.result)
-  //     setNotices(result.data.result)
-  //   })
-  // }
+
+  useEffect(()=>{
+   getNotice();
+  },[])
+  async function getNotice () {
+    return await axios.get("http://localhost:5000" + "/notice/list")
+    .then(result=>{
+      setNotices(result.data.result)
+    })
+  }
  
   return (
     
@@ -71,9 +80,11 @@ const Notice = () => {
   {notices.map((notice) => (
     <tr key={notice.NoticeID}>
       <td className="date-cell">{notice.Date}</td>
-      <td className="title-cell" onClick={() => navigate(`/notice/${notice.NoticeID}`)} style={{ cursor: 'pointer' }}>
+      <td className="title-cell" onClick={() => navigate(`/notice/detail/${notice.NoticeID}`)} style={{ cursor: 'pointer' }}>
         {notice.Title}
       </td>
+      <td onClick={() => deleteNotice(notice.NoticeID)} style={{ cursor: 'pointer' }}>X</td>
+      <td onClick={() => navigate(`/notice/edit/${notice.NoticeID}`)} style={{ cursor: 'pointer' }}>Edit</td>
     </tr>
   ))}
 </tbody>
