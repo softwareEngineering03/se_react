@@ -6,6 +6,8 @@ import Noticeid from './pages/notice/Noticeid';
 import Adminedit from './pages/notice/adminedit';
 import Noticeadmin from './pages/notice/Noticeadmin';
 import NoticeDetail from './pages/notice/NoticeDetail';
+import NoticeNew from './pages/notice/NoticeNew';
+import NoticeEdit from './pages/notice/NoticeEdit';
 import Login from './pages/notice/login';
 import Problem from './pages/problem/Problem';
 import ProblemByType from './pages/problem/ProblemByType';
@@ -23,17 +25,17 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Main />}></Route>
                     <Route path="/notice" element={<Notice />}></Route>
-                    <Route path="/noticeadmin" element={<Noticeadmin />}></Route>
                     <Route path="/noticeid" element={<Noticeid />}></Route>
                     <Route path="/adminedit" element={<Adminedit />}></Route>
                     <Route path="/login" element={<Login />}></Route>
                     <Route path="/notice/detail/:id" element={<NoticeDetail />}></Route>
+                    <Route path="/notice/edit/:id" element={<NoticeEdit />}></Route>
+                    <Route path="/notice/new" element={<NoticeNew />}></Route>
                     <Route path="/problem" element={<Problem />}></Route>
                     <Route path="/problemByType" element={<ProblemByType />}></Route>
                     <Route path="/problem/company" element={<Company />}></Route>
                     <Route path="/problem/type" element={<Type />}></Route>
                     <Route path="/problem/level" element={<Level />}></Route>
-                    <Route path="/notice/:id" element={<NoticeDetail />} />
                 </Routes>
             </BrowserRouter>
     );

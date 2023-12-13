@@ -8,12 +8,12 @@ const ProblemByType = () => {
 
     const [problems, setProblems] = useState([]);
     
-    const sampleProblems = [ //백엔드에서 가져오는 값
-    {ProblemID: '13460', ProblemTitle: '구슬 탈출 2', ProblemLink: 'https://www.acmicpc.net/problem/13460'}, 
-    {ProblemID: '14889', ProblemTitle: '스타트와 링크', ProblemLink: 'https://www.acmicpc.net/problem/14889'}, 
-    {ProblemID: '17825', ProblemTitle: '주사위 윷놀이', ProblemLink: 'https://www.acmicpc.net/problem/17825'}, 
-    {ProblemID: '19238', ProblemTitle: '스타트 택시', ProblemLink: 'https://www.acmicpc.net/problem/19238'}, 
-    {ProblemID: '23288', ProblemTitle: '주사위 굴리기 2', ProblemLink: 'https://www.acmicpc.net/problem/23288'}]
+    // const sampleProblems = [ //백엔드에서 가져오는 값
+    // {ProblemID: '13460', ProblemTitle: '구슬 탈출 2', ProblemLink: 'https://www.acmicpc.net/problem/13460'}, 
+    // {ProblemID: '14889', ProblemTitle: '스타트와 링크', ProblemLink: 'https://www.acmicpc.net/problem/14889'}, 
+    // {ProblemID: '17825', ProblemTitle: '주사위 윷놀이', ProblemLink: 'https://www.acmicpc.net/problem/17825'}, 
+    // {ProblemID: '19238', ProblemTitle: '스타트 택시', ProblemLink: 'https://www.acmicpc.net/problem/19238'}, 
+    // {ProblemID: '23288', ProblemTitle: '주사위 굴리기 2', ProblemLink: 'https://www.acmicpc.net/problem/23288'}]
     
     useEffect( ()=>{
       getProblems();
