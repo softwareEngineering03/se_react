@@ -36,8 +36,10 @@ const Notice = () => {
       email : "admin@gmail.com"
     })
     .then(result => {
+      var message = result.data.message;
       console.log(result.data.message)
-      alert("해당 공지사항을 삭제하였습니다.")
+      alert(message);
+      navigate('/notice')
     })
   }
 
@@ -55,8 +57,8 @@ const Notice = () => {
   return (
     
     <StyledTableBackground>
-      <Link to="/notice/Noticeadmin">
     <img
+      onClick={() => navigate(`/notice/new`)}
       src={adminedit}
       alt="adminedit Icon"
       style={{
@@ -69,7 +71,6 @@ const Notice = () => {
         cursor: "pointer"
       }}
     />
-  </Link>
       <StyledTable>
         <thead>
           <tr>
